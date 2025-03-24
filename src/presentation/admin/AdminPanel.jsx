@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Header from '../../components/Header';
 import toast, { Toaster } from 'react-hot-toast';
 import { addDocumentToCollection, fetchAllDataFromCollection } from '../../services/FirebaseFunction';
+import StaticData from '../../utils/Global';
 
 const AdminPanel = () => {
   const [subject, setSubject] = useState('');
@@ -24,7 +25,7 @@ const AdminPanel = () => {
 
   useEffect(() => {
     const fetchSubjects = async () => {
-      const subjectsData = await fetchAllDataFromCollection('subjects');
+      const subjectsData = await fetchAllDataFromCollection(StaticData.collectionName.subjectDb);
       if (subjectsData) {
         setSubjects(subjectsData);
       }
@@ -35,7 +36,7 @@ const AdminPanel = () => {
 
   const fetchChapters = async () => {
     if (topic.subject) {
-      const chaptersData = await fetchAllDataFromCollection('chapters');
+      const chaptersData = await fetchAllDataFromCollection(StaticData.collectionName.chapterDb);
       if (chaptersData) {
         const filteredChapters = [];
         for (let i = 0; i < chaptersData.length; i++) {
@@ -62,7 +63,7 @@ const AdminPanel = () => {
     event.preventDefault();
 
     try {
-      await addDocumentToCollection('subjects', { name: subject });
+      await addDocumentToCollection(StaticData.collectionName.subjectDb, { name: subject });
       setSubject('');
       toast.success('Subject added successfully!');
     } catch (error) {
@@ -80,7 +81,7 @@ const AdminPanel = () => {
     }
 
     try {
-      await addDocumentToCollection(`chapters`, { name: chapter.name, subject: chapter.subject, createdAt: new Date().toISOString(), });
+      await addDocumentToCollection(StaticData.collectionName.chapterDb, { name: chapter.name, subject: chapter.subject, createdAt: new Date().toISOString(), });
       setChapter({ subject: '', name: '' });
       toast.success('Chapter added successfully!');
     } catch (error) {
@@ -88,8 +89,6 @@ const AdminPanel = () => {
       toast.error('Error adding chapter.');
     }
   };
-
-
 
 
   const handleTopic = async (event) => {
@@ -101,7 +100,7 @@ const AdminPanel = () => {
     }
 
     try {
-      await addDocumentToCollection(`topics`, {
+      await addDocumentToCollection(StaticData.collectionName.topicDb, {
         chapter: topic.chapter,
         subject: topic.subject,
         videoLink: topic.videoLink,

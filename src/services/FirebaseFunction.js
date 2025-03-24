@@ -1,7 +1,5 @@
 import {firestore,auth , storage} from '../utils/Firebase'; 
 import { v4 as uuidv4 } from 'uuid'; 
-import StaticData from '../utils/Global';
-
 
 
 const fetchAllDataFromCollection = async ( collectionName ) => {

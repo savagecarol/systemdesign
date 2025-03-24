@@ -3,6 +3,7 @@ import WebIcon from '../assets/icon.svg';
 import { logOut } from '../services/FirebaseFunction';
 import { useNavigate } from 'react-router-dom'; 
 import toast from 'react-hot-toast';
+import StaticData from '../utils/Global';
 
 const Header = ({ desc }) => {
 const navigate = useNavigate();
@@ -25,7 +26,7 @@ const navigate = useNavigate();
           <div>
             <img src={WebIcon} alt="Logo" className="w-10 h-10" />
           </div>
-          <span className="ml-3 text-xl">DODO</span>
+          <span className="ml-3 text-xl">{StaticData.companyName}</span>
         </a>
         <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
         </nav>
