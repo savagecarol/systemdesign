@@ -33,7 +33,7 @@ const Home = () => {
               <NavLink
                 to={`/${doc.id}`} 
                 key={doc.id}
-                className="bg-white border-2 border-yellow-500 border-gray-200 rounded-sm shadow-md hover:shadow-2xl transform hover:scale-105 transition-all duration-300 ease-in-out hover:border-yellow-500"
+                className="bg-white border-2 border-yellow-500 rounded-sm shadow-md hover:shadow-2xl transform hover:scale-105 transition-all duration-300 ease-in-out hover:border-yellow-500"
               >
                 <div className="p-8 flex flex-col items-center justify-center">
                   <h3 className="text-2xl font-semibold text-gray-800 mb-2">{doc.name}</h3>  

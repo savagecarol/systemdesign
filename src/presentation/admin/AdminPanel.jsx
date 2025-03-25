@@ -103,6 +103,8 @@ const AdminPanel = () => {
       await addDocumentToCollection(StaticData.collectionName.topicDb, {
         chapter: topic.chapter,
         subject: topic.subject,
+        title: topic.title,
+        description: topic.description,
         videoLink: topic.videoLink,
         code: topic.code,
         pdfLink: topic.pdfLink,
@@ -112,6 +114,8 @@ const AdminPanel = () => {
       setTopic({
         chapter: '',
         subject: '',
+        title: '',
+        description: '',
         videoLink: '',
         code: '',
         pdfLink: '',
@@ -127,9 +131,7 @@ const AdminPanel = () => {
   return (
     <div>
       <Header desc="logout" />
-
       <div className="mx-16 my-12">
-        {/* Add Subject Section */}
         <h1 className="sm:text-3xl text-2xl title-font text-gray-900 font-extrabold">
           Add Subject
         </h1>
@@ -241,6 +243,31 @@ const AdminPanel = () => {
                   ))}
                 </select>
               </div>
+
+              <div className="mb-5">
+                <input
+                  type="text"
+                  name="title"
+                  value={topic.title || ''}
+                  onChange={(e) => setTopic({ ...topic, title: e.target.value })}
+                  placeholder="title"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 w-full p-2.5"
+                  required
+                />
+              </div>
+              
+              <div className="mb-5">
+                <textarea
+                  type="text"
+                  name="description"
+                  value={topic.description || ''}
+                  onChange={(e) => setTopic({ ...topic, description: e.target.value })}
+                  placeholder="description"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 w-full p-2.5"
+                  rows="5" 
+                />
+              </div>
+
               <div className="mb-5">
                 <input
                   type="text"
