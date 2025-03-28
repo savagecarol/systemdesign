@@ -8,17 +8,19 @@ import Page from './presentation/user/page';
 function App() {
   return (
     <Router>
-    <Routes>
-      <Route  path="/" element={<Home />} />
-      <Route path="/:id" element={<Page />} />
-      <Route element={ <LoginRoute />}>
-         <Route path="/login" element={<Login />} />
-      </Route>
-      <Route element={ <AdminRoute />}>       
-        <Route path="/admin-panel" element={<AdminPanel />} />
-      </Route>
-    </Routes>
-  </Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/:id" element={<Page />} />
+
+        <Route element={<LoginRoute />}>
+          <Route path="/login" element={<Login />} />
+        </Route>
+
+        <Route element={<AdminRoute />}>
+          <Route path="/admin-panel" element={<AdminPanel />} />
+        </Route>
+      </Routes>
+    </Router>
   );
 }
 
